@@ -1,5 +1,6 @@
 set number
 syntax on
+set expandtab 
 set smartcase
 set tabstop=4
 set shiftwidth=4
@@ -24,6 +25,7 @@ Plug 'hrsh7th/nvim-cmp'
 Plug 'williamboman/nvim-lsp-installer'
 Plug 'tribela/vim-transparent'
 Plug 'williamboman/mason.nvim'
+Plug 'preservim/nerdtree'
 
 " TELESCOPE " 
 Plug 'nvim-lua/plenary.nvim' 
@@ -52,17 +54,25 @@ syntax enable
 colorscheme dracula
 
 " telescope configurations "
-nnoremap <leader>ff <cmd>Telescope find_files<cr>
+"nnoremap <leader>ff <cmd>Telescope find_files<cr>"
+
 nnoremap <leader>fb <cmd> Telescope buffers<cr>
 nnoremap <leader>fh <cmd> Telescope help_tags<cr>
-
+nnoremap <leader>ff <cmd>lua require('telescope.builtin').find_files()<cr>
 nnoremap <leader>fg <cmd>lua require('telescope.builtin').live_grep()<cr>
+
+
+
+"NERDTREE NNOREMAPS"
+nnoremap <C-n> :NERDTree<CR>
+nnoremap <C-m> :NERDTreeToggle<CR>
 
 lua <<EOF
 	
 
 	-- Setup nvim-cmp.
 	local cmp = require'cmp'
+    
 
 
 	cmp.setup({
