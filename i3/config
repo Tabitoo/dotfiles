@@ -196,7 +196,7 @@ exec feh --bg-fill /home/lautaro/Downloads/wallpaperflare.com_wallpaper.jpg
 exec picom -b
 
 #Monitor setting 
-exec xrandr --auto --output HDMI-1 --mode 1360x768  --left-of VGA-1
+exec xrandr --auto --output HDMI-0 --mode 1360x765  --left-of VGA-0
 
 
 for_window [class="^.*"] border pixel 1

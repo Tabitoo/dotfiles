@@ -158,6 +158,17 @@ lua <<EOF
 		end,
 	}
 
+    require('lspconfig')["intelephense"].setup {
+		capabilities = capabilities,
+		-- Run the function when a buffer is attac, this is worth for many configurations
+		on_attach = function() 
+		   vim.keymap.set("n","K", vim.lsp.buf.hover, {buffer=0})
+			vim.keymap.set("n", "gd", vim.lsp.buf.definition, {buffer=0})
+			vim.keymap.set("n", "gt", vim.lsp.buf.type_definition, {buffer=0})
+			vim.keymap.set("n", " dl", "<cmd>Telescope diagnostics<cr>", {buffer=0})
+		end,
+	}
+
    require('lspconfig')["html"].setup {
 		capabilities = capabilities,
 		-- Run the function when a buffer is attac, this is worth for many configurations
