@@ -1,6 +1,5 @@
 set number
 syntax on
-set expandtab 
 set smartcase
 set tabstop=4
 set shiftwidth=4
@@ -190,6 +189,19 @@ lua <<EOF
 			--vim.keymap.set("n", " dl", "<cmd>Telescope diagnostics<cr>", {buffer=0})
 		end,
 	}
+
+	require('lspconfig')["tailwindcss"].setup {
+		capabilities = capabilities,
+		-- Run the function when a buffer is attac, this is worth for many configurations
+		on_attach = function() 
+		   vim.keymap.set("n","K", vim.lsp.buf.hover, {buffer=0})
+			vim.keymap.set("n", "gd", vim.lsp.buf.definition, {buffer=0})
+			vim.keymap.set("n", "gt", vim.lsp.buf.type_definition, {buffer=0})
+			--vim.keymap.set("n", " dl", "<cmd>Telescope diagnostics<cr>", {buffer=0})
+		end,
+	}
+
+	
    
 	require("mason").setup()
 
